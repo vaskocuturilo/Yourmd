@@ -1,106 +1,95 @@
 package pages;
 
-import com.codeborne.selenide.Condition;
 import locators.LandingPageLocators;
-import utils.PropertiesReader;
 
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
+import static org.testng.Assert.assertEquals;
 
 /**
- * Class Landing page.
+ * Class Loanpage.
  */
 public class LandingPage extends LandingPageLocators {
 
     /**
-     * Navigate to main page landing page.
-     *
-     * @return the landing page
-     */
-    public LandingPage navigateToMainPage() {
-        open(PropertiesReader.getProperty("URL"));
-        return this;
-    }
-
-    /**
-     * Method openAmountDropDown.
-     *
-     * @return the landing page
-     */
-    public LandingPage openAmountDropDown() {
-        $(AMOUNT_DROP_DOWN).click();
-        return this;
-    }
-
-    /**
-     * Method selectValue.
-     *
-     * @param value the value
-     * @return the landing page
-     */
-    public LandingPage selectValue(final String value) {
-        $$(SELECT_MENU_OUTER).find(Condition.text(value)).click();
-        return this;
-    }
-
-    /**
-     * Method selectAmount.
-     *
-     * @param value the value
-     * @return the landing page
-     */
-    public LandingPage selectAmount(final String value) {
-        $(APPOINTMENT).click();
-        openAmountDropDown();
-        selectValue(value);
-        return this;
-    }
-
-    /**
-     * Method add user name.
-     *
-     * @param value value.
-     * @return the landing page
-     */
-    public LandingPage addUserName(final String value) {
-
-        $(USERNAME).setValue(value);
-
-        return this;
-    }
-
-    /**
-     * Method add phone number.
-     *
-     * @param value value.
-     * @return the landing page
-     */
-    public LandingPage addPhoneNumber(final String value) {
-
-        $(PHONE_NUMBER).setValue(value);
-
-        return this;
-    }
-
-    /**
-     * Method add time.
-     *
-     * @param value value.
-     * @return the landing page
-     */
-    public LandingPage addTime(final String value) {
-        $(TIME).setValue(value);
-        return this;
-    }
-
-    /**
-     * Method clickOnLeaveRequest.
+     * Method checkHeaderMenu.
      *
      * @return the loan page
      */
-    public LoanPage clickOnLeaveRequest() {
-        $(SEND_REQUEST).click();
-        $(ALERT_INFO_FORM).shouldBe(Condition.visible).shouldHave(Condition.text(ALERT_TEXT));
-        $(CLOSE_FORM).click();
-        return new LoanPage();
+    public LandingPage checkHeaderMenu() {
+        $$(LIST_HEADER).shouldHaveSize(4);
+        return this;
+    }
+
+    /**
+     * Method checkContacts.
+     *
+     * @return the loan page
+     */
+    public LandingPage checkContacts() {
+        $$(LIST_HEADER).get(3).click();
+        $(CONTACTS).shouldBe(visible);
+        $$(CONTACTS_LIST).shouldHaveSize(4);
+        return this;
+    }
+
+    /**
+     * Method checkHeaderService.
+     *
+     * @return the loan page
+     */
+    public LandingPage checkHeaderService() {
+        $$(LIST_SERVICE).shouldHaveSize(5);
+        return this;
+    }
+
+    /**
+     * Method checkThatPageIsCompletelyLoaded.
+     *
+     * @return the loan page
+     */
+    public LandingPage checkThatPageIsCompletelyLoaded() {
+        assertEquals("complete", executeJavaScript("return document.readyState"));
+        return this;
+    }
+
+    /**
+     * Method clickToTheMainLogo.
+     *
+     * @return the loan page
+     */
+    public LandingPage clickToTheMainLogo() {
+        $(MAIN_LOGO).shouldBe(visible);
+        return this;
+    }
+
+    /**
+     * Method checkService.
+     *
+     * @return the loan page
+     */
+    public LandingPage checkService() {
+        $(SERVICE).shouldHave(
+                text("Консультации специалистов"), text("Традиционные методы лечения"),
+                text("УЗИ диагностика"), text("Детские приемы"),
+                text("Диспансеризация"), text("Функциональная диагностика"),
+                text("Амбулаторное оперативное пособие (оперирующие врачи)"), text("Процедурный кабинет"),
+                text("Аппаратные методы исследования"), text("Наркология"),
+                text("Лабораторная диагностика"), text("Центр реабилитации"),
+                text("Справки"), text("Школы (образовательные занятия для пациентов и их родственников)"),
+                text("Психологическая помощь"));
+        return this;
+    }
+
+    /**
+     * Method checkSpecialist.
+     *
+     * @return the loan page
+     */
+    public LandingPage checkSpecialist() {
+        $$(LIST_HEADER).get(2).click();
+        $$(LIST_SPECIALIST).shouldHaveSize(35);
+        return this;
     }
 }

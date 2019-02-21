@@ -6,55 +6,39 @@ package locators;
 public class LandingPageLocators {
 
     /**
-     * The constant ALERT_TEXT.
+     * The constant MAIN_LOGO.
      */
-    protected static final String ALERT_TEXT = "Заявка успешно отправлена.";
+    protected static final String MAIN_LOGO = "div.region div.header__logo";
 
     /**
-     * The constant APPOINTMENT.
+     * The constant LIST_HEADER.
      */
-    protected static final String APPOINTMENT = "div.page__header div.contacts-preview__appointment";
+    protected static final String LIST_HEADER = "div.region nav ul li";
 
     /**
-     * The constant SELECT_MENU_OUTER.
+     * The constant CONTACTS.
      */
-    protected static final String SELECT_MENU_OUTER = "#appointment div.labeled__field li";
+    protected static final String CONTACTS = "div.contacts";
 
     /**
-     * The constant AMOUNT_DROP_DOWN.
+     * The constant CONTACTS_LIST.
      */
-    protected static final String AMOUNT_DROP_DOWN = "div.select__viewport";
-    /**
-     * The constant MONTH_DROP_DOWN.
-     */
-    protected static final String MONTH_DROP_DOWN = "#myselect2";
-    /**
-     * The constant TIME.
-     */
-    protected static final String TIME = "input[name='time']";
+    protected static final String CONTACTS_LIST = "div.contacts ul li";
 
     /**
-     * The constant SEND_REQUEST.
+     * The constant SERVICE.
      */
-    protected static final String SEND_REQUEST = "input[id='temp-submit']";
+    protected static final String SERVICE = "div.service-list__content";
 
     /**
-     * The constant USERNAME.
+     * The constant LIST_SERVICE.
      */
-    protected static final String USERNAME = "input[name='username']";
+    protected static final String LIST_SERVICE = "div.page__service-preview div.region ul li";
 
     /**
-     * The constant PHONE_NUMBER.
+     * The constant LIST_SPECIALIST.
      */
-    protected static final String PHONE_NUMBER = "input[name='phone']";
+    protected static final String LIST_SPECIALIST = "div.body__content a";
 
-    /**
-     * The constant ALERT_INFO_FORM.
-     */
-    protected static final String ALERT_INFO_FORM = "div.alert";
 
-    /**
-     * The constant CLOSE_FORM.
-     */
-    protected static final String CLOSE_FORM = "div.popup__closer";
 }

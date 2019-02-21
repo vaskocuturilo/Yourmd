@@ -2,13 +2,13 @@ package smoke;
 
 import driver.BaseTest;
 import org.testng.annotations.Test;
-import pages.LandingPage;
+import pages.AppointmentPage;
 
 public class RequestWithCorrectData extends BaseTest {
 
-    @Test(description = "Navigate to main page > checks all information")
+    @Test(description = "Navigate to main page > check all information")
     public void createRequestAndCheckInformation() {
-        new LandingPage()
+        new AppointmentPage()
                 .navigateToMainPage()
                 .selectAmount("Гастроэнтерология")
                 .addUserName("Auto test")
